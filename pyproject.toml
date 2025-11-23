@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "project1_test_user_group"
+version = "0.1.0"
+description = ""
+authors = ["Papina Ruslan <ruslan.papina@outlook.com>"]
+packages = [
+    { include = "game" },
+]
+
+[tool.poetry.scripts]
+project = "game.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["venv", ".venv", "dist", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.14.6,<0.15.0)"
+]
