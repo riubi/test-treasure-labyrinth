@@ -1,18 +1,20 @@
+POETRY = $(shell command -v poetry 2>/dev/null || python3 -c "import sys; import os; bin_path = os.path.join(os.path.expanduser('~'), 'Library', 'Python', f'{sys.version_info.major}.{sys.version_info.minor}', 'bin', 'poetry'); print(bin_path if os.path.exists(bin_path) else 'poetry')")
+
 install:
-	poetry install
+	$(POETRY) install
 
 project:
-	poetry run project
+	$(POETRY) run project
 
 build:
-	poetry build
+	$(POETRY) build
 
 publish:
-	poetry publish --dry-run
+	$(POETRY) publish --dry-run
 
 package-install:
 	python3 -m pip install dist/*.whl
 
 lint:
-	poetry run ruff check .
+	$(POETRY) run ruff check .
 
