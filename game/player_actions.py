@@ -24,17 +24,32 @@ def show_inventory(game_state: dict) -> None:
 def move_player(game_state: dict, direction: str) -> None:
     """Move player to a new room in the specified direction."""
     from game.constants import ROOMS
-    from game.utils import describe_current_room
+    from game.utils import describe_current_room, random_event
     
     current_room_name = game_state['current_room']
     current_room = ROOMS[current_room_name]
     
     if direction in current_room['exits']:
         new_room_name = current_room['exits'][direction]
+        
+        # Check if trying to enter treasure_room
+        if new_room_name == 'treasure_room':
+            inventory = game_state['player_inventory']
+            if 'rusty_key' not in inventory:
+                print("The door is locked. You need a key to go further.")
+                return
+            else:
+                print(
+                    "You use the found key to open the path to the treasure room."
+                )
+        
         game_state['current_room'] = new_room_name
         game_state['steps_taken'] += 1
         print(f"You go {direction}.")
         describe_current_room(game_state)
+        
+        # Trigger random event after movement
+        random_event(game_state)
     else:
         print("You cannot go in that direction.")
 

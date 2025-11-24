@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "project1_test_user_group"
 version = "0.1.0"
-description = ""
+description = "Text adventure game 'Treasure Labyrinth' - explore rooms, solve puzzles, and find treasure!"
 authors = ["Papina Ruslan <ruslan.papina@outlook.com>"]
 packages = [
     { include = "game" },

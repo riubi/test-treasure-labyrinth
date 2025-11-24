@@ -75,3 +75,29 @@ ROOMS = {
     }
 }
 
+COMMANDS = {
+    "go <direction>": "go in direction (north/south/east/west)",
+    "north/south/east/west": "move in direction (shortcut)",
+    "look": "examine the current room",
+    "take <item>": "pick up an item",
+    "use <item>": "use an item from inventory",
+    "inventory": "show inventory",
+    "solve": "attempt to solve the puzzle in the room",
+    "quit": "exit the game",
+    "help": "show this message",
+}
+
+# Valid answer alternatives for puzzles
+# List of sets, where each set contains equivalent answers
+ANSWER_ALTERNATIVES = [
+    {'10', 'ten', 'десять'},
+]
+
+# Game mechanics constants
+EVENT_PROBABILITY_MODULO = 10  # For random event probability (10% chance)
+EVENT_PROBABILITY_THRESHOLD = 0  # Event occurs when roll equals this
+EVENT_TYPE_COUNT = 3  # Number of different event types
+
+DAMAGE_ROLL_MODULO = 10  # For trap damage calculation
+DAMAGE_THRESHOLD = 3  # Player dies if damage roll is below this
+

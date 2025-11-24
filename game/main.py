@@ -2,7 +2,6 @@
 
 """Main game entry point and game loop."""
 
-from game.constants import ROOMS
 from game.player_actions import (
     get_input,
     move_player,
@@ -27,7 +26,14 @@ def process_command(game_state: dict, command: str) -> None:
     
     cmd = command_parts[0]
     
-    if cmd == 'look':
+    # Check for single-word direction commands
+    directions = ['north', 'south', 'east', 'west', 'n', 's', 'e', 'w']
+    direction_map = {'n': 'north', 's': 'south', 'e': 'east', 'w': 'west'}
+    
+    if cmd in directions:
+        direction = direction_map.get(cmd, cmd)
+        move_player(game_state, direction)
+    elif cmd == 'look':
         describe_current_room(game_state)
     elif cmd == 'go':
         if len(command_parts) > 1:
@@ -51,10 +57,9 @@ def process_command(game_state: dict, command: str) -> None:
         show_inventory(game_state)
     elif cmd == 'solve':
         room_name = game_state['current_room']
-        room = ROOMS[room_name]
         
-        # Special handling for treasure room
-        if room_name == 'treasure_room' and 'treasure_chest' in room['items']:
+        # In treasure_room, always call attempt_open_treasure
+        if room_name == 'treasure_room':
             attempt_open_treasure(game_state)
         else:
             solve_puzzle(game_state)

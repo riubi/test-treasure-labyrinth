@@ -1,6 +1,10 @@
 # Treasure Labyrinth
 
-Text adventure game "Treasure Labyrinth" - a pet project.
+Text adventure game "Treasure Labyrinth" - explore rooms, solve puzzles, collect items, and find the treasure!
+
+## Description
+
+Treasure Labyrinth is a simple console-based text game.
 
 ## Installation
 
@@ -14,34 +18,37 @@ make install
 make project
 ```
 
-or
+## Gameplay
 
-```bash
-poetry run project
+### Basic Commands
+
+- `go <direction>` or `<direction>` - Move in a direction (north/south/east/west)
+- `look` - Examine the current room
+- `take <item>` - Pick up an item from the room
+- `use <item>` - Use an item from your inventory
+- `inventory` - Show your inventory
+- `solve` - Attempt to solve a puzzle in the current room
+- `help` - Show available commands
+- `quit` - Exit the game
+
+### Game Demo
+
+// TODO
+
+
+
+## Project Structure
+
+```
+game/
+├── __init__.py          # Package initialization
+├── constants.py         # Game data (rooms, commands, constants)
+├── main.py              # Entry point and game loop
+├── player_actions.py    # Player-related functions
+└── utils.py             # Utility functions (room descriptions, puzzles, events)
 ```
 
-## Development
+## Requirements
 
-### Code linting
-
-```bash
-make lint
-```
-
-### Building package
-
-```bash
-make build
-```
-
-### Test publication (dry-run)
-
-```bash
-make publish
-```
-
-### Installing package to system
-
-```bash
-make package-install
-```
+- Python 3.9+
+- Poetry (for dependency management)
