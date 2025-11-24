@@ -100,4 +100,3 @@ EVENT_TYPE_COUNT = 3  # Number of different event types
 
 DAMAGE_ROLL_MODULO = 10  # For trap damage calculation
 DAMAGE_THRESHOLD = 3  # Player dies if damage roll is below this
-

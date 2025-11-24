@@ -33,9 +33,7 @@ make project
 
 ### Game Demo
 
-// TODO
-
-
+[![asciicast](https://asciinema.org/a/MxBGTNzaom26KAyXYj73h1pwG.svg)](https://asciinema.org/a/MxBGTNzaom26KAyXYj73h1pwG)
 
 ## Project Structure
 

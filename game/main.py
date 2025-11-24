@@ -20,16 +20,16 @@ from game.utils import (
 def process_command(game_state: dict, command: str) -> None:
     """Process user command."""
     command_parts = command.lower().strip().split()
-    
+
     if not command_parts:
         return
-    
+
     cmd = command_parts[0]
-    
+
     # Check for single-word direction commands
     directions = ['north', 'south', 'east', 'west', 'n', 's', 'e', 'w']
     direction_map = {'n': 'north', 's': 'south', 'e': 'east', 'w': 'west'}
-    
+
     if cmd in directions:
         direction = direction_map.get(cmd, cmd)
         move_player(game_state, direction)
@@ -57,7 +57,7 @@ def process_command(game_state: dict, command: str) -> None:
         show_inventory(game_state)
     elif cmd == 'solve':
         room_name = game_state['current_room']
-        
+
         # In treasure_room, always call attempt_open_treasure
         if room_name == 'treasure_room':
             attempt_open_treasure(game_state)
@@ -81,21 +81,21 @@ def main() -> None:
         'game_over': False,
         'steps_taken': 0
     }
-    
+
     # Welcome message
     print("Welcome to the Treasure Labyrinth!")
     print("Type 'help' for available commands.\n")
-    
+
     # Describe starting room
     describe_current_room(game_state)
-    
+
     # Main game loop
     while not game_state['game_over']:
         command = get_input("\n> ")
-        
+
         if command:
             process_command(game_state, command)
-    
+
     print(f"\nGame over! Steps taken: {game_state['steps_taken']}")
 
 
